@@ -8,7 +8,7 @@ async function _checkHttp(uri) {
     let response = await request(uri, { resolveWithFullResponse: true })
     return { isOk: response.statusCode < 400 }
   } catch(error) {
-    return { isOk: false }
+    return { isOk: false, error }
   }
 }
 

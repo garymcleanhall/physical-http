@@ -27,4 +27,11 @@ describe('Physical HTTP', () => {
     expect(httpCheck.isOk).toEqual(false)
     await sample.end()
   }))
+
+  it('includes error when downstream fails', testAsync(async () => {
+    await sample.start()
+    let httpCheck = await physical.http.check('http://localhost:9090/400')
+    expect(httpCheck.error).toBeDefined()
+    await sample.end()
+  }))
 })
