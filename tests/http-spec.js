@@ -14,11 +14,17 @@ function testAsync(runAsync) {
 }
 
 describe('Physical HTTP', () => {
-  it('returns 200 when downstream returns <400', testAsync(async () => {
-    // start a service
-      await sample.start()
-      let httpCheck = await physical.http.check('http://localhost:9090')
-      expect(httpCheck.isOk).toEqual(true)
-      await sample.end()
+  it('returns ok when downstream returns <400', testAsync(async () => {
+    await sample.start()
+    let httpCheck = await physical.http.check('http://localhost:9090/200')
+    expect(httpCheck.isOk).toEqual(true)
+    await sample.end()
+  }))
+
+  it('returns not ok when downstream returns >=400', testAsync(async () => {
+    await sample.start()
+    let httpCheck = await physical.http.check('http://localhost:9090/400')
+    expect(httpCheck.isOk).toEqual(false)
+    await sample.end()
   }))
 })
