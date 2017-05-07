@@ -1,0 +1,34 @@
+{
+  "name": "physical-http",
+  "version": "0.1.0",
+  "description": "Physical module for testing connectivity with a downstream http service dependency",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garymcleanhall/physical-http.git"
+  },
+  "keywords": [
+    "physical",
+    "healthcheck",
+    "status",
+    "http",
+    "api",
+    "service"
+  ],
+  "author": "Gary McLean Hall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garymcleanhall/physical-http/issues"
+  },
+  "homepage": "https://github.com/garymcleanhall/physical-http#readme",
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  },
+  "dependencies": {
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
+  }
+}
