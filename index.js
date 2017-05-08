@@ -13,7 +13,5 @@ async function _checkHttp(uri) {
 }
 
 module.exports = {
-  http: {
-    check: _checkHttp
-  }
+  check: _checkHttp
 }

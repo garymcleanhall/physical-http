@@ -1,8 +1,11 @@
 'use strict';
 
 const
-  physical = require('../index'),
   sample = require('./service')
+
+const physical = {
+  http: require('../index')
+}
 
 function testAsync(runAsync) {
   return (done) => {
