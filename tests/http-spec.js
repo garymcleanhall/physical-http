@@ -20,6 +20,7 @@ describe('Physical HTTP', () => {
   it('returns ok when downstream returns <400', testAsync(async () => {
     await sample.start()
     let httpCheck = await physical.http.check('http://localhost:9090/200')
+    expect(httpCheck.error).not.toBeDefined()
     expect(httpCheck.isOk).toEqual(true)
     await sample.end()
   }))
@@ -35,6 +36,13 @@ describe('Physical HTTP', () => {
     await sample.start()
     let httpCheck = await physical.http.check('http://localhost:9090/400')
     expect(httpCheck.error).toBeDefined()
+    await sample.end()
+  }))
+
+  it('includes full response in result if embed option specific', testAsync(async () => {
+    await sample.start()
+    let httpCheck = await physical.http.check('http://localhost:9090/200', { embed: true })
+    expect(httpCheck.dependencies).toBeDefined()
     await sample.end()
   }))
 })
