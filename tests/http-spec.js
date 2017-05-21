@@ -42,7 +42,7 @@ describe('Physical HTTP', () => {
   it('includes full response in result if embed option specific', testAsync(async () => {
     await sample.start()
     let httpCheck = await physical.http.check('http://localhost:9090/200', { embed: true })
-    expect(httpCheck.dependencies).toBeDefined()
+    expect(httpCheck.dependencies).toEqual(jasmine.any(Object))
     await sample.end()
   }))
 })

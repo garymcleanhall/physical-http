@@ -10,7 +10,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       _server = http.createServer((request, response) => {
         response.statusCode = Number.parseInt(url.parse(request.url).pathname.substr(1))
-        response.end('')
+        response.end('{ "foo": "bar" }')
       })
       _server.listen(9090, (error) => {
         if(error) {

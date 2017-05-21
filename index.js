@@ -8,7 +8,7 @@ async function _checkHttp(uri, opts) {
     let response = await request(uri, Object.assign({ resolveWithFullResponse: true }, opts))
     return { 
       isOk: response.statusCode < 400,
-      dependencies: (opts && opts.embed) ? response.body : undefined
+      dependencies: (opts && opts.embed) ? JSON.parse(response.body) : undefined
     }
   } catch(error) {
     return { isOk: false, error }
